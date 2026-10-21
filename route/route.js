@@ -1,41 +1,12 @@
 const express = require("express");
-
+const controller = require("../controller/controller");
+const cekApiKey = require("../middleware/apikey");
 const router = express.Router();
 
-const mahasiswaController = require("../controllers/mahasiswaController");
-const cekApiKey = require("../middleware/cekApiKey");
-
-// GET semua mahasiswa
-router.get(
-  "/",
-  mahasiswaController.getAll
-);
-
-// GET mahasiswa berdasarkan ID
-router.get(
-  "/:id",
-  mahasiswaController.getById
-);
-
-// POST mahasiswa
-router.post(
-  "/",
-  cekApiKey,
-  mahasiswaController.create
-);
-
-// PUT mahasiswa
-router.put(
-  "/:id",
-  cekApiKey,
-  mahasiswaController.update
-);
-
-// DELETE mahasiswa
-router.delete(
-  "/:id",
-  cekApiKey,
-  mahasiswaController.remove
-);
+router.get("/", controller.getAll);
+router.get("/:id", controller.getById);
+router.post("/", cekApiKey, controller.create);
+router.put("/:id", cekApiKey, controller.update);
+router.delete("/:id", cekApiKey, controller.remove);
 
 module.exports = router;

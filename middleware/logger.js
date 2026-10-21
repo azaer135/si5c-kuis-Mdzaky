@@ -1,11 +1,5 @@
 function logger(req, res, next) {
-  const waktu = new Date().toISOString();
-
-  console.log(
-    `[${waktu}] ${req.method} ${req.originalUrl}`
-  );
-
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
   next();
 }
-
 module.exports = logger;
